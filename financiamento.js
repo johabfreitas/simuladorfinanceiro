@@ -1,22 +1,22 @@
-import {Parcela} from './scripts/parcela.js';
+import {Parcela} from './parcela.js';
 
-class Financiamento {
+export class Financiamento {
     #taxaJuros; //juros mensais
     #prazo; //em meses
     #parcelas = [];
     constructor(valor,entrada,taxaJuros,prazo) {
-        this.taxaJuros = taxaJuros;
+        this.#taxaJuros = taxaJuros;
         this.#prazo = prazo;
         //composição - financiamento possui ou tem parcelas
         this.#parcelas.push(new Parcela(0,0,0,0,valor - entrada));
     }
 
     static calcJuros(valor, taxaJuros) {
-        return valor * (taxaJuros /100);
+        return valor * (taxaJuros / 100);
     }
 
     calcParcelasMensais(){
-        let saldo = this.#parcelas[this.#parcelas.length - 1].getSaldo();
+        let saldo = this.#parcelas[this.#parcelas.length-1].getSaldo();
         let prazo = this.#prazo - (this.#parcelas.length - 1)
         let amortizacao =  saldo / prazo;
         for(let i=0; i < prazo; i++) {
@@ -26,6 +26,17 @@ class Financiamento {
             saldo -= amortizacao;
             if (saldo < 0) {saldo = 0;}
             this.#parcelas.push(new Parcela(numero,valor,juros,amortizacao,saldo));
+        }
+    }
+
+    exibeParcelas() {
+        const parcelas = this.#parcelas.slice(1); // Copia o valor a partir da posição 1
+        for(const parcela of parcelas) {
+            const linha = corpoTabela.insertRow(-1);
+            for (const dado of parcela.getDadosFormatados()) {
+                const celula = linha.insertCell(-1);
+                celula.textContent = dado;
+            }
         }
     }
 }
