@@ -1,4 +1,4 @@
-import {Financiamento} from './scripts/financiamento.js';
+import {Financiamento} from '../scripts/financiamento.js';
 
 const comCarencia = document.querySelector('#comCarencia'); // Seleciona a tag input id="comCarencia"
 const listaSuspensa = document.querySelector('#listaSuspensa'); // Seleciona a tag select id="listaSuspensa"
