@@ -9,9 +9,13 @@
 </head>
 <body>
     <h2>Simulador de Financiamento com Sistema de Amortização Constante (SAC)</h2>
+    <label for="vbem">Valor do Bem:</label>
     <input type="text" id="textoValor" placeholder="Valor do Bem"><br>
+    <label for="ventrada">Valor da Entrada:</label>
     <input type="text" id="textoEntrada" placeholder="Valor da Entrada"><br>
+    <label for="tjuros">Taxa de Juros:</label>
     <input type="text" id="textoTaxaJuros" placeholder="Taxa de Juros (%)"><br>
+    <label for="tprazo">Parcelas a pagar:</label>
     <input type="text" id="textoPrazo" placeholder="Prazo (em meses)"><br>
     <button id="botaoCalcular">Calcular</button>
     <input type="checkbox" id="comCarencia">Com carência?</input>
@@ -38,7 +42,7 @@
     <br>
     <button id="print" onclick="window.print()" hidden>Imprimir</button>
     <button id="refresh" hidden>Limpar</button>
-    
+
     <script type="module" src="../scripts/index.js"></script>
 </body>
 </html>

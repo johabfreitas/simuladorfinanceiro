@@ -2,14 +2,19 @@ body {
     background: rgb(4, 4, 45);
     color: white;
     font: 11pt Tahoma;
+    text-align: center;
+    position: relative;
 }
+
 tr:nth-child(even) {
     background-color: gray;
 }
+
 table, td, th {
     border: 1px solid white;
     border-collapse: collapse;
     padding: 15px;
+    margin: auto;
 }
 
 /* Oculta os botões da página de impressão */
