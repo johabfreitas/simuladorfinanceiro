@@ -1,4 +1,5 @@
-import {Financiamento} from '../scripts/financiamento.js';
+import {Financiamento} from './financiamento.js';
+import {FinanciamentoCarencia} from './financiamentocarencia.js'
 
 const comCarencia = document.querySelector('#comCarencia'); // Seleciona a tag input id="comCarencia"
 const listaSuspensa = document.querySelector('#listaSuspensa'); // Seleciona a tag select id="listaSuspensa"
@@ -8,6 +9,12 @@ const textoValor = document.querySelector('#textoValor');
 const textoEntrada = document.querySelector('#textoEntrada');
 const textoTaxaJuros = document.querySelector('#textoTaxaJuros');
 const textoPrazo = document.querySelector('#textoPrazo');
+
+function limpaCorpoDaTabela() {
+    while(corpoTabela.firstChild) {
+        corpoTabela.removeChild(corpoTabela.firstChild);
+    }
+}
 
 /**
  * Adicionar um método addEventListener com parâmetro 'change' 
@@ -22,12 +29,18 @@ comCarencia.addEventListener('change', function() {
 });
 
 botaoCalcular.addEventListener('click', function() {
+    limpaCorpoDaTabela();
     const valor = parseFloat(textoValor.value);
     const entrada = parseFloat(textoEntrada.value);
     const taxaJuros = parseFloat(textoTaxaJuros.value);
     const prazo = parseFloat(textoPrazo.value);
     let simulacao;
-    simulacao = new Financiamento(valor,entrada,taxaJuros,prazo);
+    if (comCarencia.checked) {
+        const carencia = parseInt(listaSuspensa.value);
+        simulacao = new FinanciamentoCarencia(valor,entrada,taxaJuros,prazo,carencia);
+    } else {
+        simulacao = new Financiamento(valor,entrada,taxaJuros,prazo);
+    }
     simulacao.calcParcelasMensais();
     simulacao.exibeParcelas();
 });

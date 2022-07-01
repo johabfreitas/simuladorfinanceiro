@@ -1,4 +1,4 @@
-import {Parcela} from '../scripts/parcela.js';
+import {Parcela} from './parcela.js';
 
 export class Financiamento {
     #taxaJuros; //juros mensais
@@ -38,5 +38,9 @@ export class Financiamento {
                 celula.textContent = dado;
             }
         }
+    }
+
+    getParcelas(){
+        return this.#parcelas;
     }
 }
