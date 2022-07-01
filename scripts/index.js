@@ -9,12 +9,19 @@ const textoValor = document.querySelector('#textoValor');
 const textoEntrada = document.querySelector('#textoEntrada');
 const textoTaxaJuros = document.querySelector('#textoTaxaJuros');
 const textoPrazo = document.querySelector('#textoPrazo');
+const print = document.querySelector('#print');
+const refresh = document.querySelector('#refresh');
 
 function limpaCorpoDaTabela() {
     while(corpoTabela.firstChild) {
         corpoTabela.removeChild(corpoTabela.firstChild);
     }
 }
+
+// recarrega a página e limpa o cache
+refresh.addEventListener("click", function() {
+    document.location.reload(true);
+});
 
 /**
  * Adicionar um método addEventListener com parâmetro 'change' 
@@ -43,4 +50,6 @@ botaoCalcular.addEventListener('click', function() {
     }
     simulacao.calcParcelasMensais();
     simulacao.exibeParcelas();
+    print.removeAttribute('hidden');
+    refresh.removeAttribute('hidden');
 });

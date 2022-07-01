@@ -4,22 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Simulador de Financiamentos</title>
-    <style>
-        body {
-            background: rgb(4, 4, 45);
-            color: white;
-            font: 11pt Tahoma;
-        }
-        tr:nth-child(even) {
-            background-color: gray;
-        }
-        table, td, th {
-            border: 1px solid white;
-            border-collapse: collapse;
-            padding: 15px;
-        }
-    </style>
 </head>
 <body>
     <h2>Simulador de Financiamento com Sistema de Amortização Constante (SAC)</h2>
@@ -47,8 +33,12 @@
         </thead>
         <tbody id="corpoTabela">
 
-        </tbody>
+        </tbody>        
     </table>
+    <br>
+    <button id="print" onclick="window.print()" hidden>Imprimir</button>
+    <button id="refresh" hidden>Limpar</button>
+    
     <script type="module" src="../scripts/index.js"></script>
 </body>
 </html>
