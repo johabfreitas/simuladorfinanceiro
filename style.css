@@ -17,6 +17,12 @@ table, td, th {
     margin: auto;
 }
 
+label {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+}
+
 /* Oculta os botões da página de impressão */
 @media print { 
         #print { display:none; } 
